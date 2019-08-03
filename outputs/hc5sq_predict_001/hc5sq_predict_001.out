@@ -1,0 +1,31 @@
+Time is Wed Jul 31 15:42:29 BST 2019
+2019-07-31 15:43:21.894997: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-07-31 15:43:23.098951: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1392] Found device 0 with properties: 
+name: Tesla P100-PCIE-16GB major: 6 minor: 0 memoryClockRate(GHz): 1.3285
+pciBusID: 0000:06:00.0
+totalMemory: 15.90GiB freeMemory: 15.64GiB
+2019-07-31 15:43:23.099045: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1471] Adding visible gpu devices: 0
+2019-07-31 15:43:23.598005: I tensorflow/core/common_runtime/gpu/gpu_device.cc:952] Device interconnect StreamExecutor with strength 1 edge matrix:
+2019-07-31 15:43:23.598091: I tensorflow/core/common_runtime/gpu/gpu_device.cc:958]      0 
+2019-07-31 15:43:23.598107: I tensorflow/core/common_runtime/gpu/gpu_device.cc:971] 0:   N 
+2019-07-31 15:43:23.599141: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1084] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 15159 MB memory) -> physical GPU (device: 0, name: Tesla P100-PCIE-16GB, pci bus id: 0000:06:00.0, compute capability: 6.0)
+2019-07-31 15:43:53.284278: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1471] Adding visible gpu devices: 0
+2019-07-31 15:43:53.284351: I tensorflow/core/common_runtime/gpu/gpu_device.cc:952] Device interconnect StreamExecutor with strength 1 edge matrix:
+2019-07-31 15:43:53.284371: I tensorflow/core/common_runtime/gpu/gpu_device.cc:958]      0 
+2019-07-31 15:43:53.284383: I tensorflow/core/common_runtime/gpu/gpu_device.cc:971] 0:   N 
+2019-07-31 15:43:53.284644: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1084] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 15159 MB memory) -> physical GPU (device: 0, name: Tesla P100-PCIE-16GB, pci bus id: 0000:06:00.0, compute capability: 6.0)
+/mnt/storage/home/sa16246/.local/lib/python3.6/site-packages/sklearn/base.py:253: UserWarning: Trying to unpickle estimator Lasso from version 0.20.2 when using version 0.20.3. This might lead to breaking code or invalid results. Use at your own risk.
+  UserWarning)
+Warning! The mae is multiplied by -1 so that it can be minimised in Osprey!
+Methane trajectory score: -1.1979363842286694
+Warning! The mae is multiplied by -1 so that it can be minimised in Osprey!
+Isopentane trajectory score: -3.787111284478994
+Warning! The mae is multiplied by -1 so that it can be minimised in Osprey!
+Squalane trajectory score: -154.0243526799051
+Step: 0001 cost= 14340209.000000000 c= [-25.881968]
+Step: 0021 cost= 184827.796875000 c= [-151.11996]
+Step: 0041 cost= 177555.953125000 c= [-153.95851]
+Step: 0061 cost= 177552.234375000 c= [-154.02286]
+Step: 0081 cost= 177552.218750000 c= [-154.02432]
+
+Squalane trajectory corrected score: 11.54 pm 8.53
