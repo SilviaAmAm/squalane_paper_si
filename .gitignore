@@ -1,3 +1,11 @@
 *.png
 _.*
 .idea/
+tmp_models
+images
+tmp_models
+plot_scripts/plot_animation.py
+plot_scripts/plot_compare_pm6.py
+plot_scripts/plot_squal_pred.py
+plot_scripts/plot_squal_pred_nooffset.py
+outputs/

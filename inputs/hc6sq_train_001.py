@@ -5,6 +5,7 @@ import pickle
 from random import shuffle
 import os
 
+# Creating output dir
 if not os.path.exists("../outputs/hc6sq_train_001/"):
     os.makedirs("../outputs/hc6sq_train_001/")
 
@@ -12,8 +13,8 @@ if not os.path.exists("../outputs/hc6sq_train_001/"):
 data_methane = h5py.File("../datasets/methane_cn_dft.hdf5", "r")
 data_isopentane = h5py.File("../datasets/isopentane_cn_dft.hdf5", "r")
 data_squal = h5py.File("../datasets/squalane_cn_dft.hdf5", "r")
-data_2isohex = h5py.File("../datasets/2isohexane_cn_dft_pruned.hdf5")
-data_3isohex = h5py.File("../datasets/3isohexane_cn_dft_pruned.hdf5")
+data_2isohex = h5py.File("../datasets/2isohexane_cn_dft.hdf5")
+data_3isohex = h5py.File("../datasets/3isohexane_cn_dft.hdf5")
 
 ref_ene = -133.1 * 2625.50
 

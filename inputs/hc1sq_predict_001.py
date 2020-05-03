@@ -10,6 +10,7 @@ import tensorflow as tf
 import time
 import os
 
+# Creating output dir
 if not os.path.exists("../outputs/hc1sq_predict_001/"):
     os.makedirs("../outputs/hc1sq_predict_001/")
 
@@ -40,8 +41,8 @@ def sort(traj_idx, fn, ene, xyz, zs):
     
 
 # Getting the dataset
-data_methane = h5py.File("../../data_sets/methane_cn_dft.hdf5", "r")
-data_squal = h5py.File("../../data_sets/squalane_cn_dft.hdf5", "r")
+data_methane = h5py.File("../datasets/methane_cn_dft.hdf5", "r")
+data_squal = h5py.File("../datasets/squalane_cn_dft.hdf5", "r")
 
 ref_ene = -133.1 * 2625.50
 
@@ -79,7 +80,7 @@ concat_zs = np.concatenate((pad_zs_methane, zs_squal))
 
 zs_for_scaler = list(zs_methane) + list(zs_squal)
 
-scaling = pickle.load(open("../../scaler/larger_scaler.pickle", "rb"))
+scaling = pickle.load(open("../outputs/make_scaler_001/scaler.pickle", "rb"))
 concat_ene_scaled = scaling.transform(zs_for_scaler, concat_ene)
 
 
@@ -97,7 +98,7 @@ acsf_params={"nRs2":n_basis, "nRs3":n_basis, "nTs":n_basis, "rcut":r_cut, "acut"
 estimator = ARMP(iterations=639, l1_reg=0.00014750750721308277, l2_reg=3.500152381947014e-07, learning_rate=0.002298911356875641, representation_name='acsf',
                  representation_params=acsf_params, tensorboard=True, store_frequency=10, hidden_layer_sizes=(272,179,), batch_size=23)
 
-estimator.load_nn("saved_model")
+estimator.load_nn("../outputs/hc1sq_train_001/saved_model")
 
 estimator.set_properties(concat_ene_scaled)
 start = time.time()

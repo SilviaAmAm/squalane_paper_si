@@ -9,6 +9,7 @@ from random import shuffle
 import tensorflow as tf
 import os
 
+# Create output dir
 if not os.path.exists("../outputs/hc5sq_predict_001/"):
     os.makedirs("../outputs/hc5sq_predict_001/")
 
@@ -39,9 +40,9 @@ def sort(traj_idx, fn, ene, xyz, zs):
     
 
 # Getting the dataset
-data_methane = h5py.File("../../data_sets/methane_cn_dft.hdf5", "r")
-data_isopentane = h5py.File("../../data_sets/isopentane_cn_dft.hdf5", "r")
-data_squal = h5py.File("../../data_sets/squalane_cn_dft.hdf5", "r")
+data_methane = h5py.File("../datasets/methane_cn_dft.hdf5", "r")
+data_isopentane = h5py.File("../datasets/isopentane_cn_dft.hdf5", "r")
+data_squal = h5py.File("../datasets/squalane_cn_dft.hdf5", "r")
 
 ref_ene = -133.1 * 2625.50
 
@@ -89,7 +90,7 @@ concat_zs = np.concatenate((pad_zs_methane, pad_zs_isopentane, zs_squal))
 
 zs_for_scaler = list(zs_methane) + list(zs_isopentane) + list(zs_squal)
 
-scaling = pickle.load(open("../../scaler/larger_scaler.pickle", "rb"))
+scaling = pickle.load(open("../outputs/make_scaler_001/scaler.pickle", "rb"))
 concat_ene_scaled = scaling.transform(zs_for_scaler, concat_ene)
 
 

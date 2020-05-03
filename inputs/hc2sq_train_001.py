@@ -5,6 +5,7 @@ import pickle
 from random import shuffle
 import os
 
+# Creating an output directory
 if not os.path.exists("../outputs/hc2sq_train_001/"):
     os.makedirs("../outputs/hc2sq_train_001/")
 

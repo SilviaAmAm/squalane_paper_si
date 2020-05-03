@@ -9,6 +9,7 @@ from random import shuffle
 import tensorflow as tf
 import os
 
+# Create ouptut dir
 if not os.path.exists("../outputs/hc4sq_predict_001/"):
     os.makedirs("../outputs/hc4sq_predict_001/")
 
@@ -129,7 +130,7 @@ acsf_params={"nRs2":n_basis, "nRs3":n_basis, "nTs":n_basis, "rcut":r_cut, "acut"
 estimator = ARMP(iterations=1181, l1_reg=0.00025021816931208597, l2_reg=4.0694790725485916e-05, learning_rate=0.0007055546397595542, representation_name='acsf',
                  representation_params=acsf_params, tensorboard=True, store_frequency=10, hidden_layer_sizes=(94,174,), batch_size=26)
 
-estimator.load_nn("saved_model")
+estimator.load_nn("../outputs/hc4sq_train_001/saved_model")
 
 estimator.set_properties(concat_ene_scaled)
 estimator.generate_representation(concat_xyz, concat_zs, method='fortran')

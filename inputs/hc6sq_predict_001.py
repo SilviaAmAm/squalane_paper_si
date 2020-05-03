@@ -41,8 +41,8 @@ def sort(traj_idx, fn, ene, xyz, zs):
 # Getting the dataset
 data_methane = h5py.File("../datasets/methane_cn_dft.hdf5", "r")
 data_isopentane = h5py.File("../datasets/isopentane_cn_dft.hdf5", "r")
-data_2isohex = h5py.File("../datasets/2isohexane_cn_dft_pruned.hdf5")
-data_3isohex = h5py.File("../datasets/3isohexane_cn_dft_pruned.hdf5")
+data_2isohex = h5py.File("../datasets/2isohexane_cn_dft.hdf5")
+data_3isohex = h5py.File("../datasets/3isohexane_cn_dft.hdf5")
 data_squal = h5py.File("../datasets/squalane_cn_dft.hdf5", "r")
 
 ref_ene = -133.1 * 2625.50
@@ -114,7 +114,7 @@ concat_zs = np.concatenate((pad_zs_methane, pad_zs_isopentane,  pad_zs_2isohex, 
 
 zs_for_scaler = list(zs_methane) + list(zs_isopentane) + list(zs_2isohex) + list(zs_3isohex) + list(zs_squal)
 
-scaling = pickle.load(open("../../scaler/scaler.pickle", "rb"))
+scaling = pickle.load(open("../outputs/make_scaler_001/scaler.pickle", "rb"))
 concat_ene_scaled = scaling.transform(zs_for_scaler, concat_ene)
 
 n_basis = 16
@@ -130,7 +130,7 @@ acsf_params={"nRs2":n_basis, "nRs3":n_basis, "nTs":n_basis, "rcut":r_cut, "acut"
 estimator = ARMP(iterations=900, l1_reg=0.00018891702136509527, l2_reg=2.172308772374847e-08, learning_rate=0.001471842348676605, representation_name='acsf',
                  representation_params=acsf_params, tensorboard=True, store_frequency=10, hidden_layer_sizes=(62,142,), batch_size=23)
 
-estimator.load_nn("saved_model")
+estimator.load_nn("../outputs/hc6sq_train_001/saved_model")
 
 estimator.set_properties(concat_ene_scaled)
 estimator.generate_representation(concat_xyz, concat_zs, method='fortran')

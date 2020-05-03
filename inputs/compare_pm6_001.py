@@ -4,13 +4,6 @@ import h5py
 import numpy as np
 import os
 
-import matplotlib.pyplot as plt
-import seaborn as sns
-
-sns.set()
-sns.set_context("poster")
-sns.set_style("white")
-
 def sort(traj_idx, fn, ene, xyz, zs):
     # Sorting the trajectories
     idx_sorted = traj_idx.argsort()
@@ -122,18 +115,5 @@ else:
 scaled_ene_NN = remove_offset(ene_dft, ene_NN)
 print(np.mean(np.abs(ene_dft-scaled_ene_NN)))
 
-# Plotting the data
-
-fig, ax = plt.subplots(figsize=(15,8))
-
-x = np.asarray(range(len(ene_dft)))/2
-ax.plot(x, ene_dft, label="DFT")
-ax.plot(x, scaled_ene_NN, label="NN")
-ax.plot(x, scaled_ene_pm6, label="PM6")
-ax.set_xlabel("Time (fs)")
-ax.set_ylabel("Relative energy (kJ/mol)")
-ax.legend()
-plt.tight_layout()
-plt.savefig("../outputs/compare_pm6_001/comparison.png", dpi=150)
-plt.show()
+np.savez("../outputs/compare_pm6_001/NN_pred_scaled.npz", ene_dft, scaled_ene_pm6, scaled_ene_NN)
 

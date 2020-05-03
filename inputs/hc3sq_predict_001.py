@@ -10,6 +10,8 @@ import tensorflow as tf
 import time
 import os
 
+
+# Creating output dir
 if not os.path.exists("../outputs/hc3sq_predict_001/"):
     os.makedirs("../outputs/hc3sq_predict_001/")
 

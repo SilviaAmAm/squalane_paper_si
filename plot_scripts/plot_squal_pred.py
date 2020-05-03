@@ -1,5 +1,6 @@
 import numpy as np
 import glob
+from sklearn.metrics import r2_score
 
 import matplotlib.pyplot as plt
 from matplotlib.gridspec import GridSpec
@@ -46,6 +47,9 @@ for i, filepath in enumerate(prediction_filepaths):
     pred_values = prediction_data[name1]
     true_values = prediction_data[name2]
 
+    # Calculating the R2 values
+    r2 = r2_score(true_values, pred_values)
+
     # Making the figures
     fig = plt.figure(constrained_layout=True, figsize=(16,5))
     gs = GridSpec(1, 3, figure=fig)
@@ -67,8 +71,9 @@ for i, filepath in enumerate(prediction_filepaths):
     ax2.set_xlabel("DFT energy (kJ/mol)")
     ax2.tick_params(axis='x')
     ax2.tick_params(axis='y')
+    ax2.text(np.min(true_values), np.max(pred_values) - 15, "R$^2$ = %.2f" % r2)
     # ax2.set_aspect(1)
 
-    plt.savefig("../images/%isqual.png"%(i+1), dpi=200)
+    plt.savefig("../images/%isqual_wR2.png" % (i + 1), dpi=200)
     # plt.show()
     # exit()

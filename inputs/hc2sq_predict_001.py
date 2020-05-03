@@ -10,6 +10,7 @@ import tensorflow as tf
 import time
 import os
 
+# Creating output dir
 if not os.path.exists("../outputs/hc2sq_predict_001/"):
     os.makedirs("../outputs/hc2sq_predict_001/")
 
@@ -90,7 +91,7 @@ concat_zs = np.concatenate((pad_zs_methane, pad_zs_ethane, zs_squal))
 
 zs_for_scaler = list(zs_methane) + list(zs_ethane) + list(zs_squal)
 
-scaling = pickle.load(open("../../scaler/larger_scaler.pickle", "rb"))
+scaling = pickle.load(open("../outputs/make_scaler_001/scaler.pickle", "rb"))
 concat_ene_scaled = scaling.transform(zs_for_scaler, concat_ene)
 
 
@@ -108,7 +109,7 @@ acsf_params={"nRs2":n_basis, "nRs3":n_basis, "nTs":n_basis, "rcut":r_cut, "acut"
 estimator = ARMP(iterations=1338, l1_reg=6.422829282837588e-07, l2_reg=2.192000437082048e-05, learning_rate=0.0011987510723584216, representation_name='acsf',
                  representation_params=acsf_params, tensorboard=True, store_frequency=10, hidden_layer_sizes=(393,154,), batch_size=24)
 
-estimator.load_nn("saved_model")
+estimator.load_nn("../outputs/hc2sq_train_001/saved_model")
 
 estimator.set_properties(concat_ene_scaled)
 start = time.time()

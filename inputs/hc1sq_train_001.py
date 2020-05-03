@@ -5,13 +5,14 @@ import pickle
 from random import shuffle
 import os
 
+# Create an output directory
 if not os.path.exists("../outputs/hc1sq_train_001/"):
     os.makedirs("../outputs/hc1sq_train_001/")
 
 
 # Getting the dataset
-data_methane = h5py.File("../outputs/datasets/methane_cn_dft.hdf5", "r")
-data_squal = h5py.File("../outputs/datasets/squalane_cn_dft.hdf5", "r")
+data_methane = h5py.File("../datasets/methane_cn_dft.hdf5", "r")
+data_squal = h5py.File("../datasets/squalane_cn_dft.hdf5", "r")
 
 ref_ene = -133.1 * 2625.50
 
