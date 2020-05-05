@@ -120,8 +120,6 @@ end = time.time()
 print("Predicting %i squalanes takes %.2f s" % (len(pred_idx_squal), end-start))
 print("Squalane trajectory score: %s" % str(estimator.score(pred_idx_squal)))
 
-np.savez("../outputs/hc1sq_predict_001/sorted_predictions.npz", pred_methane, concat_ene_scaled[pred_idx_methane], pred_squal, concat_ene_scaled[pred_idx_squal])
-
 # Finding a constant to remove the offset
 graph = tf.Graph()
 with graph.as_default():
@@ -146,5 +144,7 @@ with tf.Session(graph=graph) as sess:
 
 corrected_score = np.mean(np.abs((concat_ene_scaled[pred_idx_squal]-(pred_squal-new_c))))
 error_score = np.std(np.abs((concat_ene_scaled[pred_idx_squal]-(pred_squal-new_c))))
+
+np.savez("../outputs/hc1sq_predict_001/sorted_predictions.npz", pred_methane, concat_ene_scaled[pred_idx_methane], pred_squal-new_c, concat_ene_scaled[pred_idx_squal])
 
 print("\nSqualane trajectory corrected score: %.2f pm %.2f" % (corrected_score, error_score))
