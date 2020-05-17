@@ -18,3 +18,6 @@ Below is a short explanation of the various scripts.
 - [hc6sq_predict_001.py](./hc6sq_train_001.py): Using the models trained by [hc6sq_train_001.py](./hc6sq_train_001.py), the energies of squalane are predicted.
 - [timing_pred_001.py](./timing_pred_001.py): Script used to time the energy predictions for squalane with the NNs.
 - [compare_pm6_001.py](./compare_pm6_001.py): Script used to compare the squalane energy predictions of the NN, DFT and PM6.
+
+The calculations were run using this version of the [QML python package](https://github.com/qmlcode/qml):
+Git commit reference: 5d13b78e483ba90f97b61cb5e4cf8e1abd251d9d

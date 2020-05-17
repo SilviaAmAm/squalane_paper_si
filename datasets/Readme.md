@@ -1,7 +1,7 @@
 # Data sets
 
 This folder contains the data sets used in the paper. 
-For each of the hydrocarbons used (methane, ethane, isobutane, isopentane, 2-isohexane, 3-isohexane and squalane) there is a dataset with the energies at the PM6 and the DFT (Coulomb fitted unrestricted PB functional with the Def2-TZVP basis set) level.
+For each of the hydrocarbons used (methane, ethane, isobutane, isopentane, 2-isohexane, 3-isohexane and squalane) there is a dataset with the energies at the PM6 and the DFT (Coulomb fitted unrestricted PBE0 functional with the Def2-TZVP basis set) level.
 For the dft datasets, the energies are in Hartrees, while for the PM6 they are in kcal/mol.
 
 In snipped of code below shows how to extract data from the hdf5 file:
